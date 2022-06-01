@@ -9,10 +9,6 @@ const d = new Date()
 let date = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`
 let time = `${d.getHours()}:${d.getMinutes()}`
 
-// function writeTempData(data) {
-//   addDoc(collection(db, 'temp-readings'), {temp: data, time: time, date: date})
-// }
-
 async function writeTempData(data) {
     await db.collection('temp-readings').add({
         temp: data,
@@ -20,7 +16,6 @@ async function writeTempData(data) {
         date: date
     });
 }
-
 
 
 // SERIAL COMMS
