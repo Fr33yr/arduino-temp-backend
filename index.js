@@ -1,6 +1,6 @@
 const { SerialPort} = require('serialport');
 const { ReadlineParser } = require('@serialport/parser-readline')
-const {addDoc, collection} = require('firebase-admin/app')
+const { collection } = require('firebase-admin/app')
 const { db } =  require('./config/firebase.config');
 
 
