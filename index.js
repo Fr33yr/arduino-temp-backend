@@ -1,18 +1,10 @@
 const { SerialPort} = require('serialport');
 const { ReadlineParser } = require('@serialport/parser-readline')
-const http = require('http');
-const express = require('express');
-const { Server } = require('socket.io')
-
 const {addDoc, collection} = require('firebase-admin/app')
 const { db } =  require('./config/firebase.config');
 
 
 const d = new Date()
-const app = express()
-const server = http.createServer(app)
-const io = new Server(server)
-
 
 let date = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`
 let time = `${d.getHours()}:${d.getMinutes()}`
@@ -29,9 +21,6 @@ async function writeTempData(data) {
     });
 }
 
-server.listen(3000, ()=> {
-    console.log('server up');
-})
 
 
 // SERIAL COMMS
@@ -45,14 +34,13 @@ parser.on('data', (data) => {
     let temp = parseInt(data)
     writeTempData(temp)
     console.log(temp)
-    io.emit('temp', data)
 })
 
 port.write('main screen turn on', function(err) {
     if (err) {
       return console.log('Error on write: ', err.message)
     }
-    console.log('message written')
+    console.log('receiving data..')
 })
   
 // Open errors will be emitted as an error event
