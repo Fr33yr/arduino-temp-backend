@@ -1,11 +1,11 @@
-import { SerialPort } from 'serialport'
-import { ReadlineParser } from '@serialport/parser-readline'
-import http from 'http'
-import express from 'express';
-import { Server } from 'socket.io'
+const { SerialPort } = require('serialport');
+const { ReadlineParser } = require('@serialport/parser-readline')
+const http = require('http');
+const express = require('express');
+const { Server } = require('socket.io')
 
-import { addDoc, collection } from 'firebase/firestore'
-import { db } from './firebase.config.js';
+const {addDoc, collection} = require('firebase-admin/app')
+const { db } =  require('./config/firebase.config');
 
 
 const d = new Date()
