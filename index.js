@@ -1,4 +1,4 @@
-const { SerialPort } = require('serialport');
+const { SerialPort} = require('serialport');
 const { ReadlineParser } = require('@serialport/parser-readline')
 const http = require('http');
 const express = require('express');
@@ -17,8 +17,16 @@ const io = new Server(server)
 let date = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`
 let time = `${d.getHours()}:${d.getMinutes()}`
 
-function writeTempData(data) {
-  addDoc(collection(db, 'temp-readings'), {temp: data, time: time, date: date})
+// function writeTempData(data) {
+//   addDoc(collection(db, 'temp-readings'), {temp: data, time: time, date: date})
+// }
+
+async function writeTempData(data) {
+    await db.collection('temp-readings').add({
+        temp: data,
+        time: time,
+        date: date
+    });
 }
 
 server.listen(3000, ()=> {
