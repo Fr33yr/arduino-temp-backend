@@ -4,10 +4,14 @@ const { collection } = require('firebase-admin/app')
 const { db } =  require('./config/firebase.config');
 
 
-const d = new Date()
+const today = new Date()
 
-let date = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`
-let time = `${d.getHours()}:${d.getMinutes()}`
+let dd = String(today.getDate()).padStart(2, '0');
+let mm = String(today.getMonth() + 1).padStart(2, '0'); 
+let yyyy = today.getFullYear();
+
+let date = dd +"-"+ mm +"-"+ yyyy;
+let time = `${today.getHours()}:${today.getMinutes()}`
 
 async function writeTempData(data) {
     await db.collection('temp-readings').add({
