@@ -6,7 +6,7 @@ const { db } =  require('./config/firebase.config');
 
 const d = new Date()
 
-let date = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`
+let date = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`
 let time = `${d.getHours()}:${d.getMinutes()}`
 
 async function writeTempData(data) {
