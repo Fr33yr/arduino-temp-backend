@@ -1,7 +1,7 @@
 const { SerialPort} = require('serialport');
 const { ReadlineParser } = require('@serialport/parser-readline')
 const { collection } = require('firebase-admin/app')
-const { db } =  require('./config/firebase.config');
+const { db } =  require('./firebase.config');
 
 
 //slice data string in to 2 numbers
